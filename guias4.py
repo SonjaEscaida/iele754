@@ -1,38 +1,45 @@
+import numpy as np
 import pandas as pd 
 import seaborn as sns
 import matplotlib.pyplot as plt
-         #JURO QUE LO PASO A IDIOMA PYTHON#
-#%%
+       
+
 # #Perro se come la tarea random
 #aka missing completly at random
 N = 100 #Estos 3 usan el signo "<-" en vez del "=
-S = rnorm(N) 
-H = rnorm(N,8.5*S) 
+S = np.random.normal(size=N) 
+H = np.random.normal(loc=8.5*S, size=N) 
 
 #El perro se come el 50% de la tarea at random
-D = rbern(N,8.5)
-Hstar = H
-Hstar(D==1) <- NA
+D = np.random.binomial(n=1, p=0.5, size=N)
+Hstar = H.copy()
+Hstar[D==1] = np.nan
 
-plot(S,H, col=grau(0.8),lwd=2)
-points(S,Hstar, col=2, lwd=3)
-#%%
+plt.plot(S, H, color='gray', linewidth=2)
+plt.scatter(S, Hstar, color='red', s=50)
+plt.show()
+
 #Perro se come la tarea random
 #NONELINEAR WITH CEILING EFFECT
 N = 100 #Estos 3 usan el signo "<-" en vez del "=
-S = rnorm(N) 
-H = rnorm(N,(1-exp(-0.7*S))) 
+S = np.random.normal(size=N)  
+H = np.random.normal(loc=0, scale=(1-np.exp(-0.7*S)), size=N) 
 
 #El perro se come el 100% de la tarea con S>0
 D = rbern(N,ifelse(S>0,1,0))
-Hstar = H
-Hstar(D==1) <- NA
+D = np.random.binomial(n=1, p=np.where(S > 0, 1, 0), size=N)
 
-plot(S,H, col=grau(0.8),lwd=2)
-points(S,Hstar, col=2, lwd=3)
+Hstar = H.copy()
+Hstar[D==1] = np.nan 
+
+plt.plot(S, H, c="gray", alpha=0.8, linewidth=2) 
+plt.scatter(S, Hstar, c="red", linewidth=3)  #col=2
+plt.show()  
 
 
 
 
-#%%
+
+
+
 
