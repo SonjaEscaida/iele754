@@ -26,7 +26,6 @@ S = np.random.normal(size=N)
 H = np.random.normal(loc=0, scale=(1-np.exp(-0.7*S)), size=N) 
 
 #El perro se come el 100% de la tarea con S>0
-D = rbern(N,ifelse(S>0,1,0))
 D = np.random.binomial(n=1, p=np.where(S > 0, 1, 0), size=N)
 
 Hstar = H.copy()
