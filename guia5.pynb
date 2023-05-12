@@ -1,0 +1,49 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+
+uniform_data = stats.uniform.rvs(size = 100000, loc = 0, scale= 10)
+
+pd.DataFrame(uniform_data).plot(kind="density", figsize=(9,9), xlim=(-1,11))
+
+stats.uniform.cdf(x=2.5, loc=0, scale=10)  #Al correrlo =0.25
+
+stats.uniform.ppf(q=0.4, loc=0, scale=10) #= 4.0
+
+for x in range (-1,12,3) 
+    print("Density as x value"+ str(x))
+    print (stats.uniform.pdf(x, loc=0, scale=10))
+
+
+import random
+random.randint(0,10)
+
+random.choice([2,4,6,9])
+
+random.random()
+
+random.uniform(0,10)
+
+random.seed(12) #Set the seed for an arbitrary value
+print (random.uniform(0,10) for x in range(4))
+random.seed(12) #Set the seed to the same value
+print([random.uniform(0,10) for x in range(4)])
+
+prob_under_minus1 = stats.norm.cdf(x=-1, loc=0, scale=1)
+prob_over_1 = stats.norm.cdf(x=1, loc=0, scale=1) 
+between_prob = 1-(prob_under_minus1 + prob_over_1)
+print(prob_under_minus1, prob_over_1, between_prob)
+
+plt.rcParams['figure.fignize'] = (7,7)
+plt.fill_between(x=np.arange(-4,-1,0.01), y1= stats.norm.pdf(np.arange(-4,-1,0.01)), facecolor='red', alpha= 0.35)
+plt.fill_between(x=np.arange(1,4,0.01), y1= stats.norm.pdf(np.arange(1,4,0.01)), facecolor='red', alpha= 0.35)
+plt.fill_between(x=np.arange(-1,1,0.01), y1= stats.norm.pdf(np.arange(-1,1,0.01)), facecolor='blue', alpha= 0.35)
+plt.text(x=-1.8,y=0.03, s=round(prob_under_minus1,3))
+plt.text(x=-0.2,y=0.1, s=round(between_prob,3))
+plt.text(x=1.4,y=0.03, s=round(prob_over_1,3))
+
+
+
+
+
