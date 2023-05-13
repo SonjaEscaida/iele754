@@ -43,7 +43,39 @@ plt.text(x=-1.8,y=0.03, s=round(prob_under_minus1,3))
 plt.text(x=-0.2,y=0.1, s=round(between_prob,3))
 plt.text(x=1.4,y=0.03, s=round(prob_over_1,3))
 
+print(stats.norm.pdf( q=0.025))
+print(stats.norm.pdf( q=0.975)) 
 
+print(stats.norm.cdf( x=-3))
+print(stats.norm.cdf( x=3))
 
+fair_coin_flips = stats.binom.rvs(n=10, p=0.5, size=10000)
+print(pd.crosstab(index='counts', columns= fair_coin_flips))
+pd.DataFrame(fair_coin_flips).hist(range=(-0.5,10.5), bins=11)
 
+stats.binom.cdf(k=5, n=10, p=0.8)
+
+1-stats.binom.cdf(k=5, n=10, p=0.8)
+
+stats.binom.pmf(k=5, n=10, p=0.5)
+
+stats.binom.pmf(k=8, n=10, p=0.8)
+
+random.seed(12)
+flips_till_heads = stats.geom.rvs(size=10000, p=0.5)
+print(pd.crosstab(index='counts', columns=flips_till_heads))
+pd.DataFrame(flips_till_heads).hist(range=(-0.5,max(flips_till_heads)+0.5), bins=max(flips_till_heads)+1)
+
+first_five= stats.geom.cdf(k=5, p=0.5)
+1- first_five
+
+stats.geom.pnf(k=2, p=0.5) #Sale que pnf no es válido con geom
+
+prob_1 = stats.expon.cdf(x=1, scale=1)
+1- prob_1
+
+plt.fill_between(x=np.arange(0,1,0.01), y1= stats.expon.pdf(np.arange(0,1,0.01)), facecolor='blue', alpha= 0.35) 
+plt.fill_between(x=np.arange(1,7,0.01), y1= stats.expon.pdf(np.arange(1,7,0.01)), facecolor='red', alpha= 0.35)  
+plt.text(x=0.3,y=0.2, s=round(prob_1,3))
+plt.text(x=1.5,y=0.08, s=round(1-prob_1,3))
 
