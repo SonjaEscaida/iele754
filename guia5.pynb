@@ -1,4 +1,4 @@
-import numpy as np
+import numpy as np 
 import pandas as pd
 import matplotlib.pyplot as plt
 import scipy.stats as stats
@@ -77,5 +77,10 @@ prob_1 = stats.expon.cdf(x=1, scale=1)
 plt.fill_between(x=np.arange(0,1,0.01), y1= stats.expon.pdf(np.arange(0,1,0.01)), facecolor='blue', alpha= 0.35) 
 plt.fill_between(x=np.arange(1,7,0.01), y1= stats.expon.pdf(np.arange(1,7,0.01)), facecolor='red', alpha= 0.35)  
 plt.text(x=0.3,y=0.2, s=round(prob_1,3))
-plt.text(x=1.5,y=0.08, s=round(1-prob_1,3))
+plt.text(x=1.5,y=0.08, s=round(1-prob_1,3)) 
+
+random.seed(12)
+arrival_rate_1=
+
+
 
