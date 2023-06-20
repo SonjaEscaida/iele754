@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import pearsonr
-<<<<<<< HEAD
-=======
 
 url= "https://raw.githubusercontent.com/rociochavezmx/Rocio-Chavez-youtube-Files/master/Contaminacion%20Atmosferica.csv"
 df= pd.read_csv(url)
@@ -32,7 +30,6 @@ print("p:value: ", p_value)
 #Entrega la significancia estadistica git push
 
 #Terminado 
->>>>>>> 30aad97520185da8887429854c37bbdcae7364d1
 
 url= "https://raw.githubusercontent.com/rociochavezmx/Rocio-Chavez-youtube-Files/master/Contaminacion%20Atmosferica.csv"
 df= pd.read_csv(url)
