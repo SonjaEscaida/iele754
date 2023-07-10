@@ -3,8 +3,7 @@
 
 import pandas as pd
 
-data_url = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto2/01-01-2021-CasosConfirmados.csv" 
-# Completa con la URL del archivo CSV que deseas cargar
+data_url = "https://raw.githubusercontent.com/MinCiencia/Datos-COVID19/master/output/producto2/01-01-2021-CasosConfirmados.csv" # Completa con la URL del archivo CSV que deseas cargar
 df = pd.read_csv(data_url)
 print(df)
 
@@ -13,8 +12,6 @@ print(df)
 # Muestra las primeras filas del dataframe
 df.info()
 df.head()
-
-
 
 #Ejercicio 3: Manejar valores faltantes
 
@@ -28,16 +25,13 @@ df_limpio = df.dropna()
 #Ejercicio 4: Convertir tipos de datos
 
 # Convierte una columna a datetime
-df_limpio['columna_fecha'] = pd._____(df_limpio['columna_fecha'])
-
+df_limpio['columna_fecha'] = pd.to_datetime(df_limpio['columna_fecha'])
 
 
 #Ejercicio 5: Calcular estadísticas básicas
 
 # Calcula la media de una columna
 valor_medio = df_limpio['Casos Confirmados'].mean()
-
-
 
 
 #Ejercicio 6: Crear un histograma
@@ -73,7 +67,7 @@ plt.show()
 from statsmodels.tsa.seasonal import seasonal_decompose
 
 # Descompone una columna de series temporales
-descomposicion = seasonal_decompose(df_limpio['nombre_columna'],
+descomposicion = seasonal_decompose(df_limpio['Casos confirmados'],
                                     model='additive', period=1)
 descomposicion.plot()
 plt.show()
@@ -85,9 +79,12 @@ plt.show()
 from statsmodels.tsa.arima.model import ARIMA
 
 # Crea y ajusta un modelo ARIMA
-modelo = ARIMA(df_limpio['nombre_columna'], order=(5,1,0))
-modelo_ajustado = modelo._____
+modelo = ARIMA(df_limpio['Casos confirmados'], order=(5,1,0))
+modelo_ajustado = modelo.fit()
 
+#Es probable que tenga conflictos con la instrucción del datetime y el ejercicio final. 
+# El resto del código corrio sin problemas.
+#  Incluso consideré agregar una nueva columna y dejarla como columna fecha 
 
 
 
